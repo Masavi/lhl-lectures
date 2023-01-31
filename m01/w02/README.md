@@ -1,1 +1,3 @@
 # Objects in JS
+
+## Topics to cover...
