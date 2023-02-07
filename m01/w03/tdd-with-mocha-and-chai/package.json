@@ -1,0 +1,15 @@
+{
+  "name": "tdd-with-mocha-and-chai",
+  "version": "1.0.0",
+  "description": "project built to learn how to use mocha and chai with node.js",
+  "main": "01-math.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Mauricio Saavedra",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  }
+}
