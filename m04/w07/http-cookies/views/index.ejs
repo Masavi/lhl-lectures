@@ -1,6 +1,31 @@
 <%- include('partials/_header.ejs') %>
  
-  <p>Welcome to the Index!</p>
+  <% if (user) { %>
+
+    <h2> Welcome, <%= user.first_name %></h2>
+
+    <form method="POST" action="/sign-out">
+      <button type="submit">Sign Out</button>
+    </form>
+
+  <% } else { %>
+
+  <p>Please, log in!</p>
+  <form method="POST" action="/sign-in">
+    
+    <label for="email">Email</label>
+    <input type="email" name="email">
+
+    <br />
+
+    <label for="password">Password</label>
+    <input type="text" name="password">
+
+    <button type="submit">Submit</button>
+
+  </form>
+
+  <% } %>
 
 </body>
 </html>
