@@ -1,0 +1,10 @@
+/* Set sans-serif font for everything in web-page. */
+* {
+  font-family: Arial, Helvetica, Ubuntu, sans-serif;  
+}
+
+/* Set font colour and shadow for headings in web-page. */
+h1, h2, h3, h4, h5, h6 {
+  color: salmon;
+  text-shadow: 2px 2px 0 black;
+}
