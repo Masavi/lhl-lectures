@@ -1,0 +1,77 @@
+/* CSS:
+    Cascade
+    Styling
+    Sheets
+*/
+
+/*
+  CSS Syntax:
+    1) Selector
+    2) Curlys "{}"
+    3) Attributes, ending with ";"
+*/
+
+/*
+  CSS Selector, we have four types:
+    These are GENERAL, apply to many
+    1) Global
+    2) Element selector
+
+    These are PARTICULAR, apply to a few
+    3) Class selector
+    4) ID selector
+*/
+* {
+  box-sizing: border-box;
+}
+
+/* Element selector
+    applies to all elements with the same name
+*/
+html {
+  background-color:rebeccapurple;
+  color: white;
+}
+
+p {
+  color: yellow;
+  width: 100px;
+}
+
+img {
+  width: 600px;
+}
+
+/* Class selector
+    applies only to elements that have this class
+*/
+.my-custom-paragraph {
+  color:aqua;
+}
+
+/*
+  ID Selector
+    applies only to elements that have this ID
+*/
+#my-id {
+  border: 2px solid white;
+}
+
+/*
+  Flexbox Example
+*/
+
+.parent-container {
+  border: 2px solid green;
+  height: 500px;
+  display: flex;
+
+  /* Direction of elements */
+  flex-direction: row;
+
+  /* Horizontal arrangement */
+  justify-content: space-around;
+
+  /* Vertical arrangement */
+  align-items: center;
+}
