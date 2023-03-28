@@ -1,0 +1,47 @@
+@import 'variables';
+
+/*
+  NESTING
+*/
+section {
+  font-size: $font-size-title;
+  width: 300px;
+  height: 70vh;
+  border: 2px solid $color-primary;
+
+  div {
+    font-size: 1rem;
+    margin: 20px;
+  }
+
+  p {
+    font-size: 0.75rem;
+    color: $color-secondary;
+  }
+}
+
+/*
+  EXTEND
+*/
+.my-custom-header {
+  @extend section;
+  border: 2px groove gray;
+}
+
+/*
+  MIXINS
+*/
+@mixin header-styles($size, $color) {
+  font-size: $size*2;
+  color: $color;
+}
+
+.my-class {
+  @include header-styles(16px, green);
+  width: 100px;
+}
+
+.my-second-class {
+  @include header-styles(4px, pink);
+  height: 200px;
+}

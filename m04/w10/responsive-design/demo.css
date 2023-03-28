@@ -1,0 +1,39 @@
+/*
+  NESTING
+*/
+section, .my-custom-header {
+  font-size: 32px;
+  width: 300px;
+  height: 70vh;
+  border: 2px solid red;
+}
+section div, .my-custom-header div {
+  font-size: 1rem;
+  margin: 20px;
+}
+section p, .my-custom-header p {
+  font-size: 0.75rem;
+  color: blue;
+}
+
+/*
+  EXTEND
+*/
+.my-custom-header {
+  border: 2px groove gray;
+}
+
+/*
+  MIXINS
+*/
+.my-class {
+  font-size: 32px;
+  color: green;
+  width: 100px;
+}
+
+.my-second-class {
+  font-size: 8px;
+  color: pink;
+  height: 200px;
+}
