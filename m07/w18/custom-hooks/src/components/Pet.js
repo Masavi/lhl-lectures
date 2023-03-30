@@ -5,6 +5,7 @@ import '../styles/pet.css';
 const Pet = () => {
   const [randomCat] = useRandomPet('cat', 'https://cataas.com/cat?json=true');
   const [randomDog] = useRandomPet('dog', 'https://dog.ceo/api/breeds/image/random');
+
   return (
     <>
       <h3>Look at my pets!</h3>
