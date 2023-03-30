@@ -10,8 +10,9 @@ const useAxios = (url) => {
       .then((response) => {
         setData(response.data);
       })
-      .catch(() => {
-        alert('Error fetching data!!! 😢');
+      .catch((err) => {
+        console.log('This is the error:', err);
+        // alert('Error fetching data!!! 😢');
       })
 
   }, [url])
