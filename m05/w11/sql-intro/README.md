@@ -8,9 +8,47 @@
 - [x] Filtering and ordering
 - [x] Joining tables
 - [x] Grouping records
-- [x] Aggregation functions
 - [x] `LIMIT` and `OFFSET`
 
+### Relational Databases
+---
+It is a type of database that stores and provides access to data points that are related to one another. Relational databases are based on the **relational model**, which is a way of representing data in tables, using columns and rows.
+
+Relational databases use the **Structured Query Language (SQL)** in order to access and manage data.
+
+### Relational Database Management System (RDBMS)
+--- 
+
+It is a program that serves **and** controls interactions with one or more _Relational Databases_.
+
+PostgreSQL is an example of a RDBMS because it allows you to create, update, read and delete multiple databases and its contents.
+
+### The relational data model
+---
+Relational databases work with SQL.
+
+The **S** in **SQL** is for _structured_. This means that our data must conform to a _structure_ in order to store it in the database.
+
+- The data itself is stored in **tables** which define things such as field names, data types, and other data constraints (you are probably familiar with tables already if you've used programs like Excel or Calc)
+- Tables are made up of **columns** and **rows**
+  - Columns are called `fields`
+  - Rows are called `records`
+- Each table describes an entity (eg. `users`, `products`, `shifts`, `tweets`)
+  - The fields represent properties of the entity
+  - Each record represents one unique entity
+
+#### Primary Keys
+
+In order to reference a particular record in a table, each one is given a unique identifier we call a **Primary Key**
+
+#### Foreign Keys (_Reference_)
+
+Other tables can then make reference to a particular record in another table by storing the Primary Keys value. We call a Primary Key stored in another table a **Foreign Key**
+
+- It is through this Primary Key/Foreign Key relationship that our tables are _related_ to one another
+
+### The SQL syntax and clauses
+---
 #### CREATE TABLE
 
 A relational database consists of multiple related tables. A table consists of rows and columns. Tables allow you to store structured data like customers, products, employees, etc.
@@ -199,3 +237,26 @@ LIMIT 10 OFFSET 20;
 -- you can specify these in any order
 OFFSET 20 LIMIT 10;
 ```
+
+### Group By + Join example
+
+This is the missing example on how to use a group by combined with a join:
+
+```sql
+SELECT COUNT(movies.movie_id), directors.last_name
+FROM movies, directors
+WHERE movies.directed_by=directors.director_id
+GROUP BY directors.last_name;
+```
+
+Please note that instead of using the `INNER JOIN`, here we are using the `WHERE` clause.
+The `WHERE` achieves the same result as the `INNER JOIN` here but allows you to fetch `FROM` directors and that way combine data from both tables.
+
+
+## Extra content
+
+- [PostgreSQL Full Tutorial](https://www.postgresqltutorial.com/)
+
+- [PostgreSQL Docs](https://www.postgresql.org/docs/)
+
+
