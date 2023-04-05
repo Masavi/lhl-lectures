@@ -8,6 +8,7 @@
 - [x] Filtering and ordering
 - [x] Joining tables
 - [x] Grouping records
+- [x] Aggregation functions
 - [x] `LIMIT` and `OFFSET`
 
 ### Relational Databases
@@ -17,7 +18,7 @@ It is a type of database that stores and provides access to data points that are
 Relational databases use the **Structured Query Language (SQL)** in order to access and manage data.
 
 ### Relational Database Management System (RDBMS)
---- 
+---
 
 It is a program that serves **and** controls interactions with one or more _Relational Databases_.
 
