@@ -1,68 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# M08-W20 | End-to-End Testing with Cypress
 
-## Available Scripts
+## Topics to cover
 
-In the project directory, you can run:
+* [X] 1. What is Cypress?
+* [X] 2. Getting Started with Cypress
 
-### `npm start`
+## Unit and Integration
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Unit: testing a single piece of code (function / component)
+* Integration: testing how units work *together*
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+We used Jest last day to write some unit / integration tests.
 
-### `npm test`
+* Jest is a testing framework
+* CLI tool
+* Originally intended for React
+* Automated testing
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Pros of Jest?
 
-### `npm run build`
+* Quick to write targetted / technical tests
+* Excels at unit / integration tests
+* Very easy to test at an atomic level (turn off, or don't call what isn't needed)
+* Easy mocking of functions (also avail. in Cypress)
+* Very fast, very efficient
+* Integrates nicely with our Git / GitHub repos (also avail. in Cypress)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## End-to-End
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+* End-to-End: "simulate" user behaviour; test whole user stories
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Cypress! What is it?
 
-### `npm run eject`
+* JavaScript Web Testing and Component Testing Framework
+* --> integration or end-to-end
+* Opens a browser window and navigates a web site like a end-user would
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Pros of Cypress?
+* Easy mocking of functions (also avail. in Jest)
+* Integrates nicely with our Git / GitHub repos (also avail. in Jest)
+* Opens doors to testing responsive features
+* High confidence the app behaves appropriately for users
+* Able to watch the test process (help with debugging)
+* Tests more than just "code", we can check content, CSS, etc. potentially
+* Cypress is capable of taking screenshots and video recordings of its tests
+* Completely language / stack agnostic, can write tests for any web app you can access in the browser, local or otherwise
+* Documentation and UI are very mature and premium
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## About Cypress
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Cypress is a very robust program, capable of automated testing. The documentation is top-tier, a true treat and pleasure to work with. Tests, similar to Jest/Mocha/Chai, are written in near-plain English, allowing for a wide array of team members to contribute to a project's quality assurance. Tests like these are expected to be run before (and during process of) launch of a project or version thereof—think of it as a safeguard step to prevent launching a project with missing or broken core features. As for quality assurance, Cypress is an amazing tool, ensuring the app is navigable and functional from the browser the same way a user would! It is capable of exporting screenshots and even video of tests and their results, making it great for easy sharing with a team or client. It is a very, very mature library and features an exceptional graphical user interface (GUI) toolset. It's specialties include wholistic integration and full-on end-to-end testing of applications. Because it can load both local files or external web pages/documents via a browser, you can even write tests involving (or exclusively encompassing) external projects of which you have no source-code access.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Setting up Cypress
 
-## Learn More
+Install the package and dependencies:
+`npm i cypress --save-dev`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+First time set-up:
+`./node_modules/.bin/cypress install`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Run cypress in-project via:
+`./node_modules/.bin/cypress open`
 
-### Code Splitting
+## Folders/Files and their Purposes!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* `/cypress.json`: Used to override default configuration values.
+* `/cypress/fixtures`: Test data; often in JSON.
+* `/cypress/integration`: Our test specifications.
+* `/cypress/plugins`: Add-ons to expand on Cypress' functionality.
+* `/cypress/support`: Scripts; an area where we can add on to Cypress if needed.
 
-### Analyzing the Bundle Size
+## Common Commands
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* [describe(), it(), and beforeEach()](https://docs.cypress.io/guides/references/bundled-tools#Mocha) are afforded to us by Mocha.
+    * Describe is used to, well, describe a block of tests!
+    * It is used to label a specific test block / unit.
+    * BeforeEach allows us an opportunity to add code/setup that will run before each text in the block.
+* [cy.visit()](https://docs.cypress.io/api/commands/visit#Syntax) visits a web page.
+* [cy.get()](https://docs.cypress.io/api/commands/get) Retrieves an HTML element based on jQuery/CSS-like selectors.
+    * [<entity>.as()](https://docs.cypress.io/api/commands/as) Assign an alias for later use in cy.get() or cy.wait(), use an `@` in a selector to call upon an alias.
+* [<element>.find()](https://docs.cypress.io/api/commands/find) Retrieves a child element from inside of a selected element.
+* [cy.intercept()](https://docs.cypress.io/api/commands/intercept) Used for "spying" (checking for use of a particular request) or "stubbing" (replacing the response for a particular request.)
+* [cy.wait()](https://docs.cypress.io/api/commands/wait) Waits before proceding with test instructions.
+* [<element>.click()](https://docs.cypress.io/api/commands/click), [<element>.type()](https://docs.cypress.io/api/commands/type), [<element>.check()](https://docs.cypress.io/api/commands/check) are used to interact with elements and forms in a web page.
 
-### Making a Progressive Web App
+## Resources
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* [Cypress (Official Website)](https://www.cypress.io/)
+* [Cypress Assertion Commands Doc](https://example.cypress.io/commands/assertions)
+* [`should` in Cypress](https://docs.cypress.io/api/commands/should)
+* [(Chai) Assert in Cypress](https://docs.cypress.io/guides/references/assertions)
+* Trouble in WSL2? [Follow the documentation carefully!](https://docs.cypress.io/guides/getting-started/installing-cypress#Windows-Subsystem-for-Linux)
+    * WSL2 requires X-Server, which usually requires Firewall tweaks to get through! It allows your Linux to reach Windows and render the program's GUI (Electron app: Cypress GUI.)
+* [End-to-End Web Testing with Cypress (O'Reilly Book)](https://www.oreilly.com/library/view/end-to-end-web-testing/9781839213854/)
