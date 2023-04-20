@@ -1,12 +1,12 @@
 # M08-W21 | Class-based Components
 
 ## Topics to cover
-- [ ] 1. Review ES6 Classes
-- [ ] 2. Intro to Class-based Components
-- [ ] 3. Passing Props
-- [ ] 4. Constructor and State
-- [ ] 5. Handling Events and Changes to State
-- [ ] 6. Lifecycle Methods
+- [x] 1. Review ES6 Classes
+- [x] 2. Intro to Class-based Components
+- [x] 3. Passing Props
+- [x] 4. Constructor and State
+- [x] 5. Handling Events and Changes to State
+- [x] 6. Lifecycle Methods
 
 ### 1. Review ES6 Classes
 ---
