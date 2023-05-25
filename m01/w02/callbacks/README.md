@@ -10,7 +10,7 @@
     - [x] Implementing our own forEach and forEachInReverse
 - [x] 5. Nested scope and "scope chain"
 
-### 1. Functions as Values
+### Functions as Values
 
 Just like everything else in JavaScript, functions are values. As a result, they can be stored in variables just like any other value
 
@@ -46,6 +46,13 @@ const myHigherOrderFunction = function(callback) {
 myHigherOrderFunction(myFunction);
 ```
 
+### Callbacks and Higher Order Functions
+
+A callback is a function that gets passed to another function to be executed by that function
+* Callback functions are used all over the place in JavaScript
+* They encapsulate reusable code that can be passed around like any other JS variable
+* We call the function that accepts another function as an argument a **higher order function**
+
 ### Anonymous Functions
 
 We can pass callback functions _inline_ to a higher order function rather than storing the callback in a variable first
@@ -78,7 +85,6 @@ const myArrowFunc = () => {
 ```
 
 * There are some _gotchas_ around using the `this` keyword inside an arrow function, but if you aren't using `this`, arrow functions can be used interchangeably with "regular" functions
-
 * Arrow functions are often used as callbacks because they are shorter/cleaner to type
 
 ```js
