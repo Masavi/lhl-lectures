@@ -6,14 +6,20 @@
   <title>Edit Movie</title>
 </head>
 <body>
+  <ul>
+    <li> <a href="/">Go back to homepage</a> </li>
+  </ul>
+
+  <h1>Edit Movie Form</h1>
+
   <form action="/api/movies/<%= movie.id %>/edit" method="post">
     <label for="title">Title</label>
     <input type="text" name="title" value="<%= movie.title %>">
 
-    <label for="title">Director</label>
+    <label for="director">Director</label>
     <input type="text" name="director" value="<%= movie.director %>">
 
-    <input type="submit" value="Edit movie">
+    <input type="submit" value="Update movie">
   </form>
 </body>
 </html>
