@@ -1,11 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
-const cookieParser = require('cookie-parser'); 
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // Configuration
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+const SALT_ROUNDS = 10;
 const PORT = 3000;
 const app = express();
 
@@ -70,6 +72,34 @@ app.post('/login', (req, res) => {
     return res.status(404).send('no user with that email found');
   }
 
+  /**
+   * Bcrypt password compare process
+   * 1) compare incoming plain-text password with hashedPassword,
+   *    by using the 'bcrypt.compare' method.
+   */
+
+  const isMatch = bcrypt.compareSync(password, foundUser.password);
+
+  // bcrypt.compare(password, foundUser.password, (error, isMatch) => {
+  //   if (error) {
+  //     return res.status(400).send(error);
+  //   }
+  //   if (!isMatch) {
+  //     return res.status(400).send('authentication failed 😢');
+  //   }
+
+  //   // happy path! the user is who they say they are!
+  //   // set the cookie
+  //   res.cookie('userId', foundUser.id);
+
+  //   // redirect the user
+  //   res.redirect('/protected');
+  // })
+
+  if (!isMatch) {
+    return res.status(400).send('authentication failed 😢');
+  }
+
   // happy path! the user is who they say they are!
   // set the cookie
   res.cookie('userId', foundUser.id);
@@ -97,11 +127,20 @@ app.post('/register', (req, res) => {
   // create a random id
   const id = Math.random().toString(36).substring(2, 5);
 
+  /**
+   * Bcrypt Process:
+   * 1) Generate a salt, using a number of salt_rounds
+   * 2) Generate a hash, by combining the password and the salt
+   */
+
+  const salt = bcrypt.genSaltSync(SALT_ROUNDS);
+  const hashedPassword = bcrypt.hashSync(password, salt);
+
   // create a new user object
   const user = {
     id: id,
     email: email,
-    password: password // Store our hashed password instead of our plain text!
+    password: hashedPassword // Store our hashed password instead of our plain text!
   };
 
   // add the new user object to `users`
@@ -173,7 +212,6 @@ app.get('/protected', (req, res) => {
 
   const templateVars = {
     email: user.email,
-    name: req.session.name,
   };
 
   res.render('protected', templateVars);
