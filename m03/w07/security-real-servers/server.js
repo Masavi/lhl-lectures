@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -19,7 +20,16 @@ app.set('view engine', 'ejs');
 
 // set up middleware
 app.use(morgan('dev'));
-app.use(cookieParser());
+// app.use(cookieParser());
+
+const cookieSessionConfig = cookieSession({
+  name: 'myCookieSession',
+  keys: ['my-secret-word'],
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours,
+});
+
+app.use(cookieSessionConfig);
+
 app.use(express.urlencoded({ extended: false }));
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,7 +112,8 @@ app.post('/login', (req, res) => {
 
   // happy path! the user is who they say they are!
   // set the cookie
-  res.cookie('userId', foundUser.id);
+  // res.cookie('userId', foundUser.id);
+  req.session.userId = foundUser.id;
 
   // redirect the user
   res.redirect('/protected');
@@ -155,7 +166,8 @@ app.post('/register', (req, res) => {
 // POST /logout
 app.post('/logout', (req, res) => {
   // clear the user's cookie
-  res.clearCookie('userId');
+  // res.clearCookie('userId');
+  req.session = null;
 
   // send the user somewhere
   res.redirect('/login');
@@ -200,7 +212,8 @@ app.get('/home', (req, res) => {
 // GET /protected
 app.get('/protected', (req, res) => {
   // retrieve the user's cookie
-  const userId = req.cookies.userId;
+  // const userId = req.cookies.userId;
+  const userId = req.session.userId;
 
   // check if the user is logged in
   if (!userId) {

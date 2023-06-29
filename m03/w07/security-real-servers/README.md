@@ -1,7 +1,4 @@
-# Module 03 | Week 07
-
-## Security and Real World HTTP Servers
----
+# M03-W07 | Security and Real World HTTP Servers
 
 ## Topics to cover
 
